@@ -1,68 +1,118 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-color: rgb(8, 3, 34); /* Dark Background */
 }
 
 body {
-  margin: 0;
+  background: url('./assets/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* App Container */
+.app-container {
+  background-color: rgba(30, 30, 50, 0.95); /* Translucent dark */
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6); /* Deeper shadow for dark theme */
+  width: 100%; /* Adjusted for responsiveness */
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
 }
 
+/* Header Section */
+.header {
+  margin-bottom: 1.5rem;
+  color: rgb(220, 220, 255); /* Light color for contrast */
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.motivational-box {
+  background-color: rgba(17, 17, 17, 0.8); /* Dark but lighter than the background */
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.quote {
+  font-size: 1.4rem;
+  color: rgb(245, 245, 255); /* Light color for readability */
+  animation: slideIn 0.5s ease-in-out;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+/* Left Panel Styling */
+.left-panel {
+  width: 40%;
+  color: rgb(200, 200, 255); /* Light text for better visibility */
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid rgb(80, 80, 120); /* Subtle border */
+  background-color: rgb(12, 12, 30); /* Darker input background */
+  color: white;
+}
+
+/* Button Styling */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: rgb(50, 100, 255); /* Bright blue for visibility */
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+button:hover {
+  background-color: rgb(40, 90, 230); /* Slightly darker blue */
+  transform: scale(1.05); /* Subtle hover effect */
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  a:hover {
-    color: #747bff;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+/* Slide-in Animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

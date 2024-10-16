@@ -1,22 +1,37 @@
-// src/App.jsx
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Calendar from 'react-calendar';
+import Header from './components/Header';
 import HabitList from './components/HabitList';
 import HabitForm from './components/HabitForm';
+import 'react-calendar/dist/Calendar.css';
+import './index.css';
 
-const App = () => {
-  const [refresh, setRefresh] = useState(false);  // Used to refresh the habit list
+function App() {
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [habits, setHabits] = useState([]);
 
-  const handleFormSubmit = () => {
-    setRefresh(!refresh);  // Toggle state to trigger re-fetch in HabitList
-  };
+    useEffect(() => {
+        fetchHabits(selectedDate);
+    }, [selectedDate]);
 
-  return (
-    <div>
-      <h1>Habit Tracker</h1>
-      <HabitForm onSubmit={handleFormSubmit} />
-      <HabitList key={refresh} />  {/* Refresh the list when refresh changes */}
-    </div>
-  );
-};
+    const fetchHabits = async (date) => {
+        const formattedDate = date.toISOString().split('T')[0];
+        const data = await getHabitsByDate(formattedDate);
+        setHabits(data);
+    };
+
+    return (
+        <div className="app-container">
+            <Header />
+            <div className="content">
+                <div className="left-panel">
+                    <Calendar onChange={setSelectedDate} value={selectedDate} />
+                    <HabitList habits={habits} />
+                </div>
+                <HabitForm selectedDate={selectedDate} />
+            </div>
+        </div>
+    );
+}
 
 export default App;
